@@ -8,6 +8,7 @@
     <title>Booking List</title>
     <script src="https://kit.fontawesome.com/692189991f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'hotel/css/booking_list_view.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
         <div class="header">
             <div class="headings">
                 <h1>Your Bookings</h1>
-                <h2>Welcome dear {{user}}</h2>
+                <h2>Welcome {{user}}!</h2>
             </div>
             <div class="home">
                 <!-- Div 1: Back to Home -->
@@ -29,22 +30,41 @@
         <div class="bookings">
             {% for booking in booking_list %}
             <div class="booking">
-                <img src="https://images.unsplash.com/photo-1560067174-c5a3a8f37060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"
-                    alt="">
+                {% if booking.get_room_category == "AC" %}
+                <img
+                src="https://images.unsplash.com/photo-1508253578933-20b529302151?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                {% elif booking.get_room_category == "NON-AC" %}
+                <img
+                src="https://images.unsplash.com/photo-1595161695996-f746349f4945?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                {% elif booking.get_room_category == "KING" %}
+                <img
+                src= "https://images.unsplash.com/photo-1590490359854-dfba19688d70?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=1000&q=60"
+                />
+                {% elif booking.get_room_category == "QUEEN" %}
+                <img
+                src= "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8&auto=format&fit=crop&w=700&q=60"
+                />
+                {% elif booking.get_room_category == "DELUXE" %}
+                <img
+                src="https://images.unsplash.com/photo-1576675762999-2d8ee979aac4?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                {% endif %}
                 <div class="category">
                     <h2>{{booking.get_room_category}} Suite</h2>
                 </div>
                 <div class="from">
-                    <h3>From: {{booking.check_in}}</h3>
+                    <p>From: {{booking.check_in}}</p>
                 </div>
                 <div class="to">
-                    <h3>To: {{booking.check_out}}</h3>
+                    <p>To: {{booking.check_out}}</p>
                 </div>
                 <div class="beds">
-                    <h3>Beds: {{booking.room.beds}}</h3>
+                    <p>Beds: {{booking.room.beds}}</p>
                 </div>
                 <div class="capacity">
-                    <h3>Capacity: {{booking.room.capacity}}</h3>
+                    <p>Capacity: {{booking.room.capacity}}</p>
                 </div>
                 <div class="cancel"><a href="{{booking.get_cancel_booking_url}}" class="invisible"><i
                             class="far fa-2x fa-times-circle"> Cancel

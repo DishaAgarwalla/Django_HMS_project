@@ -99,10 +99,10 @@ class RoomDetailView(View):
             )
             booking.save()
             message = Mail(
-                from_email='dhabaledarshan@gmail.com',
-                to_emails='dhabalekalpana@gmail.com',
-                subject='Sending from hotelina',
-                html_content='<strong>Sending from hotelina</strong>')
+                from_email='dishaagarwalla2001@gmail.com',
+                to_emails='dishaagarwalla2001@gmail.com',
+                subject='Sending from Parador',
+                html_content='<strong>Sending from Parador</strong>')
             try:
                 sg = SendGridAPIClient(env.str('SG_KEY'))
                 response = sg.send(message)

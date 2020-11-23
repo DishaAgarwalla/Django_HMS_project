@@ -143,11 +143,6 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-# USE_I18N = True
-
-# USE_L10N = True
-
-# USE_TZ = True
 
 SITE_ID = 1
 
@@ -156,7 +151,7 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = 'static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 LOGIN_REDIRECT_URL = '/'

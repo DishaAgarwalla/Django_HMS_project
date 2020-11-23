@@ -24,6 +24,7 @@
         <div id="navlist-div" class="">
           <ul id="navlist" class="folding-nav hidden">
             {% if request.user.is_authenticated %}
+            <li><a href="{% url 'hotel:BookingListView' %}">My Bookings</a></li>
             <li><a href="{% url 'account_logout' %}">Logout</a></li>
             {% else %}
             <li><a href="{% url 'account_login' %}">Login</a></li>
@@ -34,15 +35,15 @@
       </nav>
 
       <!-- Landing -->
-      <!-- <div class="landing">
+      <div class="landing">
         <h1>Luxury <span>Re-Defined</span></h1>
         <img
-          src="../static/hotel/img/hotel-1.jpg"
+          src="https://images.unsplash.com/photo-1444201983204-c43cbd584d93?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fGhvdGVsfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60"
           id="landing-img"
           alt="Best Hotel in the World"
           srcset=""
         />
-      </div> -->
+      </div>
 
       <h2>Rooms</h2>
       <!-- Main Content -->
@@ -50,13 +51,54 @@
         {% for room_category, room_url in room_list %}
         <div class="room">
           <a href="{{room_url}}">
+          {% if room_category == "AC" %}
+            <img
+            src="https://images.unsplash.com/photo-1508253578933-20b529302151?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60"
+            />
+            <h2>{{room_category}} Suite<h2>
+            <p>
+              The Deluxe AC Room is the comfortable choice for two occupants. The rooms are equipped with television wooden closet, comfortable bed and center table.
+            </p>
+          {% elif room_category == "NON-AC" %}
           <img
-            src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          src="https://images.unsplash.com/photo-1595161695996-f746349f4945?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60"
           />
-          <h2>{{room_category}}<h2>
+          <h2>{{room_category}} Suite<h2>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi
+            Standard Non AC rooms are well decorated and fully furnished rooms, it has all the basic amenities 
+            <!-- like private attached
+            bathroom, in room services are available, internet and intercom facilities are also available, front desk services are
+            also available, color television is also available, it will be a memorable stay for the guests and will enjoy the
+            hospitality, guests will have a lavish and luxurious stay and will experience the best stay in the hotel. -->
           </p>
+          {% elif room_category == "KING" %}
+            <img
+            src= "https://images.unsplash.com/photo-1590490359854-dfba19688d70?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=1000&q=60"
+            />
+            <h2>{{room_category}} Suite<h2>
+            <p>
+              Our king size room has a seating area, ample storage, digital safe, minibar and luxurious duck down bedding
+            </p>
+          {% elif room_category == "QUEEN" %}
+          <img
+          src= "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8&auto=format&fit=crop&w=700&q=60"
+          />
+          <h2>{{room_category}} Suite<h2>
+          <p>
+            Standard Queen rooms are medium sized rooms and offer a queen sized bed, en suite shower over
+            bath and WC, free and secure wireless internet. 
+          </p>
+          {% elif room_category == "DELUXE" %}
+            <img
+            src="https://images.unsplash.com/photo-1576675762999-2d8ee979aac4?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60"
+            />
+            <h2>{{room_category}} Suite<h2>
+          <p>
+            Our Deluxe king size room has a seating area, ample storage, digital safe, minibar and luxurious duck down bedding
+          </p>
+          {% endif %}
+          
+          
           </a>
         </div>
 

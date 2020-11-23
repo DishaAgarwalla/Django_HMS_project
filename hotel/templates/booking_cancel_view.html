@@ -21,7 +21,8 @@
         <!-- Room Image -->
         <div class="image">
             <img
-                src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+                src="https://images.unsplash.com/photo-1565031491910-e57fac031c41?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=700&q=60">
+        
         </div>
 
         <!-- Room Details -->
@@ -34,19 +35,25 @@
 
             <!-- Div 2: Room Information -->
             <div class="room-info">
-                <h1>{{room_category}}</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id optio rem saepe culpa architecto tempora
-                    numquam debitis reiciendis! Quaerat laudantium consequuntur doloribus quod placeat consectetur
-                    veniam,
-                    rerum repellendus magnam labore. </p>
+                <h1>{{booking.get_room_category}} Suite</h1>
+                <br/>
+                <p>Guest will find this room both ideal for work and leisure.</p>
+                <br/>
+                <p>Room size- 21 m2</p>
+                <p>Amenities - Private attached bathroom, in room services are available, internet and intercom facilities are also
+                    available, front desk services are also available, color television is also available, it will be a memorable stay
+                    for the guests and will enjoy the hospitality, guests will have a lavish and luxurious stay and will experience the
+                    best stay in the hotel.</p>
             </div>
 
             <!-- Div 3: Room Booking Form -->
             <form id="booking-form" action="" method="POST">
 
                 {% csrf_token %}
-                <h2>Are you sure you wanna cancel this Booking? Details-</h2>
-                <h3>{{booking.room.number}}{{booking.get_room_category}} {{booking}}</h3>
+                <h3>Are you sure you wanna cancel this Booking? </h3>
+                <br/>
+                <p>{{booking.room.number}} {{booking.get_room_category}} {{booking}}</p>
+                <br/>
                 <!-- Input Div -->
                 <div class="input-div">
                     <button type="submit">Cancel the Booking</button>

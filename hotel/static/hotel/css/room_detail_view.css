@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
 /* Root CSS */
 
 *{
@@ -8,7 +10,7 @@
 body{
     background-color: rgb(46, 47, 48);
     color: rgb(236, 235, 228);
-    font-family: sans-serif;
+    font-family: "Montserrat";
     line-height: 1.25;
     height: 100vh;
 }
