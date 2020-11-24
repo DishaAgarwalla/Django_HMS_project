@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, FormView, View, DeleteView
 from django.urls import reverse, reverse_lazy
 from .models import Room, Booking
@@ -51,12 +51,7 @@ class BookingListView(ListView):
             booking_list = Booking.objects.filter(user=self.request.user)
             return booking_list
 
-    # def get_context_data(self, **kwargs):
-    #     room = Room.objects.all()[0]
-    #     room_categories = dict(room.ROOM_CATEGORIES)
-    #     context = super().get_context_data(**kwargs)
-    #     context
-
+    
 
 class RoomDetailView(View):
     def get(self, request, *args, **kwargs):
@@ -98,23 +93,11 @@ class RoomDetailView(View):
                 check_out=data['check_out']
             )
             booking.save()
-            message = Mail(
-                from_email='dishaagarwalla2001@gmail.com',
-                to_emails='dishaagarwalla2001@gmail.com',
-                subject='Sending from Parador',
-                html_content='<strong>Sending from Parador</strong>')
-            try:
-                sg = SendGridAPIClient(env.str('SG_KEY'))
-                response = sg.send(message)
-                print(response.status_code)
-                print(response.body)
-                print(response.headers)
-                print('SENT!!!')
-            except Exception as e:
-                print(e)
-            return HttpResponse(booking)
+            return HttpResponseRedirect('booking_list/')
+            # return HttpResponse(booking)
         else:
-            return HttpResponse('All of this category of rooms are booked!! Try another one')
+            return HttpResponse('All of this category of rooms are booked! Try another one')
+    # success_url = reverse_lazy('hotel:BookingListView')
 
 
 class CancelBookingView(DeleteView):
